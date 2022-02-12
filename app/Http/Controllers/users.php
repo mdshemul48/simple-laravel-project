@@ -11,7 +11,8 @@ class users extends Controller
 {
     function userList()
     {
-        return view('userList');
+        $users = User::all(['name', 'email']);
+        return view('userList', ['users' => $users]);
     }
     function createUser()
     {
@@ -23,5 +24,16 @@ class users extends Controller
             ['email', '=', $req->email],
             ['password', '=', $req->password]
         ])->get();
+    }
+    function createSubmit(Request $req)
+    {
+        $user = new User;
+        $user->name = $req->name;
+        $user->email = $req->email;
+        $user->password = $req->password;
+        $result =  $user->save();
+        if ($result) {
+            return redirect('/users');
+        }
     }
 }
