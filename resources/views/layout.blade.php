@@ -21,13 +21,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">User List </a>
+                            <a class="nav-link" href="users">User List </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
+                            <a class="nav-link" href="/">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Create account</a>
+                            <a class="nav-link" href="create">Create account</a>
                         </li>
                     </ul>
                 </div>
