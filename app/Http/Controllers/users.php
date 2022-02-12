@@ -9,8 +9,9 @@ use App\Models\User;
 
 class users extends Controller
 {
-    function userList()
+    function userList(Request $req)
     {
+        return $req->session()->get('logData');
         $users = User::all(['name', 'email']);
         return view('userList', ['users' => $users]);
     }
@@ -20,10 +21,12 @@ class users extends Controller
     }
     function loginSubmit(Request $req)
     {
-        return User::select('*')->where([
+        User::select('*')->where([
             ['email', '=', $req->email],
             ['password', '=', $req->password]
         ])->get();
+        $req->session()->put('logData', [$req->input()]);
+        return redirect('/users');
     }
     function createSubmit(Request $req)
     {
@@ -33,6 +36,7 @@ class users extends Controller
         $user->password = $req->password;
         $result =  $user->save();
         if ($result) {
+            $req->session()->put('logData', [$req->input()]);
             return redirect('/users');
         }
     }
