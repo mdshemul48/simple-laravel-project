@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
+use App\Models\User;
+
 class users extends Controller
 {
     function userList()
@@ -16,6 +19,9 @@ class users extends Controller
     }
     function loginSubmit(Request $req)
     {
-        print_r($req->input());
+        return User::select('*')->where([
+            ['email', '=', $req->email],
+            ['password', '=', $req->password]
+        ])->get();
     }
 }
