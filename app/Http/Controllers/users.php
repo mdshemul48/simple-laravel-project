@@ -14,4 +14,8 @@ class users extends Controller
     {
         return view('create');
     }
+    function loginSubmit(Request $req)
+    {
+        print_r($req->input());
+    }
 }

@@ -11,3 +11,4 @@ Route::get('/', function () {
 
 Route::get('users', [users::class, 'userList']);
 Route::get('create', [users::class, 'createUser']);
+Route::post('loginSubmit', [users::class, 'loginSubmit']);
